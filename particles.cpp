@@ -94,19 +94,34 @@ int particleGrid::check_neighbors(int x, int y)
 {
     auto cells = this->get_cells();
 
-    if(x+1 < SIZE_X && cells[x+1][y].type == AIR) return 1;
+    float current_density = cells[x][y].density;
 
-    if(x+1 < SIZE_X && y+1 < SIZE_Y && y-1 > 0 && cells[x+1][y-1].type == AIR && cells[x+1][y+1].type == AIR ) return 2;
 
-    if(x+1 < SIZE_X && y-1 > 0      && cells[x+1][y-1].type == AIR) return 3;
+    if(x+1 < SIZE_X && cells[x+1][y].density < current_density) return 1;
 
-    if(x+1 < SIZE_X && y+1 < SIZE_Y && cells[x+1][y+1].type == AIR) return 4;
+    //if(x+1 < SIZE_X && cells[x+1][y].type == AIR) return 1;
 
-    if(y+1 < SIZE_Y && y-1 > 0      && cells[x][y].type == WATER && cells[x][y+1].type == AIR && cells[x][y-1].type == AIR ) return 5;
+    if(x+1 < SIZE_X &&
+       y+1 < SIZE_Y &&
+       y-1 > 0 &&
+       cells[x+1][y-1].density < current_density &&
+       cells[x+1][y+1].density < current_density ) return 2;
 
-    if(y-1 > 0      && cells[x][y].type == WATER && cells[x][y-1].type == AIR ) return 6;
+    //if(x+1 < SIZE_X && y+1 < SIZE_Y && y-1 > 0 && cells[x+1][y-1].type == AIR && cells[x+1][y+1].type == AIR ) return 2;
 
-    if(y+1 < SIZE_Y && cells[x][y].type == WATER && cells[x][y+1].type == AIR ) return 7;
+    if(x+1 < SIZE_X && y-1 > 0      && cells[x+1][y-1].density < current_density) return 3;
+
+    if(x+1 < SIZE_X && y+1 < SIZE_Y && cells[x+1][y+1].density < current_density) return 4;
+
+    if(y+1 < SIZE_Y &&
+       y-1 > 0      &&
+       cells[x][y].type == WATER &&
+       cells[x][y+1].density < current_density &&
+       cells[x][y-1].density < current_density ) return 5;
+
+    if(y-1 > 0      && cells[x][y].type == WATER && cells[x][y-1].density < current_density ) return 6;
+
+    if(y+1 < SIZE_Y && cells[x][y].type == WATER && cells[x][y+1].density < current_density ) return 7;
 
     return 0;
 
@@ -116,13 +131,20 @@ void particleGrid::swap_particle(int x0, int y0, int x1, int y1)
 {
     particle Particle = this->_cells[x0][y0];
 
-    this->_cells[x0][y0].type   = AIR;
+    particle_type current_type = Particle.type;
+    particle_type target_type  = this->_cells[x1][y1].type;
 
-    this->_cells[x1][y1].type    = Particle.type;
-    this->_cells[x1][y1].color   = this->_cells[x0][y0].color;
+    sf::Color current_color = Particle.color;
+    sf::Color target_color  = this->_cells[x1][y1].color;
+
+    this->_cells[x0][y0].type    = target_type;
+
+    this->_cells[x1][y1].type    = current_type;
+    this->_cells[x1][y1].color   = current_color;
+    this->_cells[x1][y1].density = this->_cells[x0][y0].density;
     this->_cells[x1][y1].updated = true;
 
-    this->_cells[x0][y0].color  = sf::Color(0);
+    this->_cells[x0][y0].color  = target_color;
 }
 
 void particleGrid::update_all()

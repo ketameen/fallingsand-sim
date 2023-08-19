@@ -22,9 +22,13 @@ enum particle_type
 typedef struct particle
 {
     int x,y;
-    int density;
+
+    float density {1.2};
+    
     particle_type type;
+
     bool updated {false};
+    
     sf::Color color;
 
 } particle;

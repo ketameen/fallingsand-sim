@@ -86,6 +86,7 @@ int main()
                                 particle * Particle = new particle();
                                 particle_type type  = SAND;
                                 Particle->type      = type;
+                                Particle->density   = 1600;
                                 Particle->color     = sf::Color(color_value_r,90,0);
 
                                 particleGrid.add_particle(event.mouseButton.x + i, event.mouseButton.y + j, *Particle);
@@ -113,6 +114,7 @@ int main()
                                 particle * Particle = new particle();
                                 particle_type type  = WATER;
                                 Particle->type      = type;
+                                Particle->density   = 1000;
                                 Particle->color     = sf::Color(100,120,color_value_b);
 
                                 particleGrid.add_particle(event.mouseButton.x + i, event.mouseButton.y + j, *Particle);
