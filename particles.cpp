@@ -52,6 +52,7 @@ void particleGrid::initialize_cells()
     particle * Particle = new particle();
     particle_type type  = AIR;
     Particle->type      = type;
+    Particle->density   = 1.2;
     Particle->color     = sf::Color(0);
 
 
@@ -97,31 +98,42 @@ int particleGrid::check_neighbors(int x, int y)
     float current_density = cells[x][y].density;
 
 
-    if(x+1 < SIZE_X && cells[x+1][y].density < current_density) return 1;
+    if(
+      x+1 < SIZE_X &&
+      cells[x+1][y].density < current_density) return 1;
 
     //if(x+1 < SIZE_X && cells[x+1][y].type == AIR) return 1;
 
-    if(x+1 < SIZE_X &&
+    if(
+       x+1 < SIZE_X &&
        y+1 < SIZE_Y &&
-       y-1 > 0 &&
+       y-1 > 0      &&
        cells[x+1][y-1].density < current_density &&
        cells[x+1][y+1].density < current_density ) return 2;
 
     //if(x+1 < SIZE_X && y+1 < SIZE_Y && y-1 > 0 && cells[x+1][y-1].type == AIR && cells[x+1][y+1].type == AIR ) return 2;
 
-    if(x+1 < SIZE_X && y-1 > 0      && cells[x+1][y-1].density < current_density) return 3;
-
-    if(x+1 < SIZE_X && y+1 < SIZE_Y && cells[x+1][y+1].density < current_density) return 4;
-
-    if(y+1 < SIZE_Y &&
+    if(x+1 < SIZE_X &&
        y-1 > 0      &&
+       cells[x+1][y-1].density < current_density) return 3;
+
+    if(x+1 < SIZE_X &&
+       y+1 < SIZE_Y &&
+       cells[x+1][y+1].density < current_density) return 4;
+    
+    if(y+1 < SIZE_Y              &&
+       y-1 > 0                   &&
        cells[x][y].type == WATER &&
        cells[x][y+1].density < current_density &&
        cells[x][y-1].density < current_density ) return 5;
 
-    if(y-1 > 0      && cells[x][y].type == WATER && cells[x][y-1].density < current_density ) return 6;
+    if(y-1 > 0                   &&
+       cells[x][y].type == WATER &&
+       cells[x][y-1].density < current_density ) return 6;
 
-    if(y+1 < SIZE_Y && cells[x][y].type == WATER && cells[x][y+1].density < current_density ) return 7;
+    if(y+1 < SIZE_Y              &&
+       cells[x][y].type == WATER &&
+       cells[x][y+1].density < current_density ) return 7;
 
     return 0;
 
@@ -130,6 +142,7 @@ int particleGrid::check_neighbors(int x, int y)
 void particleGrid::swap_particle(int x0, int y0, int x1, int y1)
 {
     particle Particle = this->_cells[x0][y0];
+
 
     particle_type current_type = Particle.type;
     particle_type target_type  = this->_cells[x1][y1].type;

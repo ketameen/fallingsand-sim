@@ -8,8 +8,8 @@
 #include "particles.hpp"
 
 
-#define HEIGHT 800
-#define WIDTH  800
+//#define HEIGHT 800
+//#define WIDTH  800
 
 
 
@@ -19,7 +19,7 @@ int main()
     sf::Clock clock;
     sf::RenderWindow window(sf::VideoMode(SIZE_X, SIZE_Y), "sand");
 
-    window.setFramerateLimit(1000);
+    window.setFramerateLimit(120);
 
     particleGrid particleGrid;
 
@@ -135,27 +135,28 @@ int main()
         {
             for(int y = 0; y < SIZE_Y; y++)
             {
-                particle Particle = particleGrid.get_particle(x,y); 
-                if(Particle.type != AIR)
-                {
+                //particle Particle = particleGrid.get_particle(x,y); 
+
+                //if(Particle.type != AIR)
+                //{
                     //std::cout << particleGrid.get_particle(x,y).type << std::endl;
                     //std::cout << "pixel drawn at " << x <<", "<< y << std::endl;
 
-                    /*
+                    
                     int color_value_r =  std::rand() % 255;
-                    int color_value_g =  std::rand() % 255;
-                    int color_value_b =  std::rand() % 255;
-                    */
-                    sf::Vertex point(sf::Vector2f(x,y),Particle.color);
+                    //int color_value_g =  std::rand() % 255;
+                    //int color_value_b =  std::rand() % 255;
+                    
+                    sf::Vertex point(sf::Vector2f(x,y),sf::Color(color_value_r,50,50));
                     //sf::Vertex point(sf::Vector2f(x,y),sf::Color(200, 200, 200));
 
                     window.draw(&point, 1, sf::Points);
-                }
+                //}
             }
         }
 
         //std::cout<< "displaying frame "<< std::endl;
-        particleGrid.update_all();
+        //particleGrid.update_all();
         window.display();
     }
 
