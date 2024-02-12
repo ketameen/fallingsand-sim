@@ -451,7 +451,7 @@ void particleGrid::update_all()
         {
             //std::cout << "updating particle" << std::endl;
             update_particle(i, j);
-            if (get_particle(i, j).type != AIR) this->quadTree.insert(QuadPoint(i, j));
+            //if (get_particle(i, j).type != AIR) this->quadTree.insert(QuadPoint(i, j));
         }
     }
 

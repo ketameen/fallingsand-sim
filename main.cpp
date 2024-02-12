@@ -53,7 +53,7 @@ int main()
     std::cout << "initializing grid" << std::endl;
     particleGrid.initialize_cells();
 
-    particleGrid.add_random_cells();
+    //particleGrid.add_random_cells();
 
     std::cout << "start loop" << std::endl;
     while (window.isOpen())
