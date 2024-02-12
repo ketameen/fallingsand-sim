@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include <imgui/imgui.h>
+#include <imgui.h>
 #include <imgui-SFML.h>
 
 
@@ -53,7 +53,7 @@ int main()
     std::cout << "initializing grid" << std::endl;
     particleGrid.initialize_cells();
 
-    //particleGrid.add_random_cells();
+    particleGrid.add_random_cells();
 
     std::cout << "start loop" << std::endl;
     while (window.isOpen())
@@ -119,7 +119,7 @@ int main()
          For Debug:
          Show quadtree regions.
         */
-        particleGrid.render(window);
+        //particleGrid.renderQuadRegions(window);
 
         // FPS
         //std::cout << std::to_string(1. / elapsed.asSeconds()) << std::endl;
