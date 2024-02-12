@@ -1,1 +1,10 @@
 
+[submodule "include/imgui"]
+	path = include/imgui
+	url = https://github.com/ocornut/imgui
+[submodule "include/imgui-sfml"]
+	path = include/imgui-sfml
+	url = https://github.com/SFML/imgui-sfml.git
+[submodule "include/CTPL"]
+	path = include/CTPL
+	url = https://github.com/vit-vit/CTPL.git
