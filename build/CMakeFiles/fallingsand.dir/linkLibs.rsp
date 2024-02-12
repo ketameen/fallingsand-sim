@@ -1,0 +1,1 @@
+  -L"C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/SFML/lib"  -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-system -lsfml-window -ldwmapi -lopengl32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

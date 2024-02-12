@@ -1,4 +1,7 @@
 #include <SFML/Graphics.hpp>
+#include <imgui/imgui.h>
+#include <imgui-SFML.h>
+
 
 #include <cmath>
 #include <time.h>
@@ -7,159 +10,131 @@
 
 #include "particles.hpp"
 
+#define  HEIGHT 800
+#define  WIDTH  1280
 
-//#define HEIGHT 800
-//#define WIDTH  800
+#define SCALE_FACTOR_X (WIDTH  / SIZE_X)
+#define SCALE_FACTOR_Y (HEIGHT / SIZE_Y)
 
 
 
+
+
+// need to implement the Quadtree
+// the quadtree needs to ignore stable flagged particles
+// and process unstable ones
 
 int main()
 {
-    sf::Clock clock;
-    sf::RenderWindow window(sf::VideoMode(SIZE_X, SIZE_Y), "sand");
 
+    std::cout << "start" << std::endl;
+
+    sf::Text fps;
+    fps.setFillColor(sf::Color::White);
+    fps.setCharacterSize(35);
+    
+    sf::Clock clock;
+
+    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "falling_sand");
+
+    // initializing ImGui
+    ImGui::SFML::Init(window);
+
+    std::cout << "setting frame limit" << std::endl;
     window.setFramerateLimit(120);
 
+    std::cout << "instantiating grid" << std::endl;
     particleGrid particleGrid;
 
+    particle_type selected_type;
 
-    /*
-    particle * Particle = new particle();
+    particleGrid.setScale(sf::Vector2f(SCALE_FACTOR_X, SCALE_FACTOR_Y));
 
-    Particle->type = SAND;
-    */
-
+    std::cout << "initializing grid" << std::endl;
     particleGrid.initialize_cells();
 
     //particleGrid.add_random_cells();
 
-    
-    /*
-    for(int x = SIZE_X/3; x < SIZE_Y/2; x++)
-    {
-        for(int y = SIZE_Y/3; y < SIZE_Y/2; y++)
-        {
-            
-            particleGrid.add_particle(x, y, *Particle);
-            
-        }
-    }
-    */
-
-    
-
+    std::cout << "start loop" << std::endl;
     while (window.isOpen())
     {
         window.clear();
         
         sf::Event event;
 
+        //std::cout << "listening to mouse" << std::endl;
+        if(sf::Mouse::isButtonPressed(sf::Mouse::Right))
+        {
+            sf::Vector2i mouse_position = sf::Mouse::getPosition(window);
+            particleGrid.add_bucket(mouse_position.x,
+                                    mouse_position.y,
+                                    selected_type);
+        }
+
         while (window.pollEvent(event))
         {
+            // uncomment this afterwards.
+            ImGui::SFML::ProcessEvent(event);
 
             switch (event.type)
             {
                 case sf::Event::Closed :
                     window.close();
                     break;
-
-
-                case sf::Event::MouseButtonPressed:
-                {
-                    if (event.mouseButton.button == sf::Mouse::Right)
-                    {
-                        //std::cout << "the right button was pressed" << std::endl;
-                        //std::cout << "mouse x: " << event.mouseButton.x << std::endl;
-                        //std::cout << "mouse y: " << event.mouseButton.y << std::endl;
-                        std::cout << "adding particle" << std::endl;
-
-                        //particleGrid.add_random_cells();
-                        
-                        for (int i = -10; i<20; i++)
-                        {
-                            for (int j = -10; j<20; j++)
-                            {
-                                int base          = 120;
-                                int color_value_r =  base + std::rand() % (255-base);
-
-                                particle * Particle = new particle();
-                                particle_type type  = SAND;
-                                Particle->type      = type;
-                                Particle->density   = 1600;
-                                Particle->color     = sf::Color(color_value_r,90,0);
-
-                                particleGrid.add_particle(event.mouseButton.x + i, event.mouseButton.y + j, *Particle);
-                            }
-                        }
-                        
-                        
-                    }
-
-                    // to refactor 
-                    if (event.mouseButton.button == sf::Mouse::Left)
-                    {
-                        //std::cout << "the right button was pressed" << std::endl;
-                        //std::cout << "mouse x: " << event.mouseButton.x << std::endl;
-                        //std::cout << "mouse y: " << event.mouseButton.y << std::endl;
-                        //std::cout << "removing particle" << std::endl;
-
-                        for (int i = -10; i<20; i++)
-                        {
-                            for (int j = -10; j<20; j++)
-                            {
-                                int base          = 120;
-                                int color_value_b =  base + std::rand() % (255-base);
-
-                                particle * Particle = new particle();
-                                particle_type type  = WATER;
-                                Particle->type      = type;
-                                Particle->density   = 1000;
-                                Particle->color     = sf::Color(100,120,color_value_b);
-
-                                particleGrid.add_particle(event.mouseButton.x + i, event.mouseButton.y + j, *Particle);
-                            }
-                        }
-                        
-                    }
-                    break;
-                }
                 default:
                     break;
             }
         }
 
+        // ImGui window config
+        sf::Time elapsed = clock.restart();
+        fps.setString("FPS: "+ std::to_string(1. / elapsed.asSeconds()));
+
+
+       // /*
+        //*
+        //std::cout << "setting ImGui" << std::endl;
+        ImGui::SFML::Update(window, elapsed);
+
+        ImGui::Begin("Elements");
+        //ImGui::Text("Falling Sand");
+
+        // Elements Buttons
+        if(ImGui::Button( "Sand")) selected_type = SAND  ;
+        if(ImGui::Button("Water")) selected_type = WATER ;
+        if(ImGui::Button("Smoke")) selected_type = SMOKE ;
+        if(ImGui::Button("Stone")) selected_type = STONE ;
+        if(ImGui::Button("Erase")) selected_type = AIR   ;
+        ImGui::SliderInt("Bucket_Size", &particleGrid.brush_size, MIN_BUCKET_SIZE, MAX_BUCKET_SIZE);
         
+        // update particles state
+        //std::cout << "updating cells" << std::endl;
+        particleGrid.update_all();
+
+        //std::cout << "rendering cells" << std::endl;
+        particleGrid.render(window);
+
+        /*
+         *
+         For Debug:
+         Show quadtree regions.
+        */
+        particleGrid.renderQuadRegions(window);
+
+        // FPS
+        //std::cout << std::to_string(1. / elapsed.asSeconds()) << std::endl;
+        window.draw(fps);
+
+        ImGui::End();
+
+        // render menu
+        ImGui::SFML::Render(window);
         
-        for(int x = 0; x < SIZE_X; x++)
-        {
-            for(int y = 0; y < SIZE_Y; y++)
-            {
-                //particle Particle = particleGrid.get_particle(x,y); 
-
-                //if(Particle.type != AIR)
-                //{
-                    //std::cout << particleGrid.get_particle(x,y).type << std::endl;
-                    //std::cout << "pixel drawn at " << x <<", "<< y << std::endl;
-
-                    
-                    int color_value_r =  std::rand() % 255;
-                    //int color_value_g =  std::rand() % 255;
-                    //int color_value_b =  std::rand() % 255;
-                    
-                    sf::Vertex point(sf::Vector2f(x,y),sf::Color(color_value_r,50,50));
-                    //sf::Vertex point(sf::Vector2f(x,y),sf::Color(200, 200, 200));
-
-                    window.draw(&point, 1, sf::Points);
-                //}
-            }
-        }
-
-        //std::cout<< "displaying frame "<< std::endl;
-        //particleGrid.update_all();
         window.display();
     }
 
+
+    ImGui::SFML::Shutdown(window);
     return 0;
 
     

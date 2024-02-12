@@ -1,0 +1,3 @@
+C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build/CMakeFiles/fallingsand.dir
+C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build/CMakeFiles/edit_cache.dir
+C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build/CMakeFiles/rebuild_cache.dir

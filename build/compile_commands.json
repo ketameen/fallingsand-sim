@@ -1,0 +1,68 @@
+[
+{
+  "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\main.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\main.cpp",
+  "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/main.cpp",
+  "output": "CMakeFiles/fallingsand.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\include\\src\\particles.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\include\\src\\particles.cpp",
+  "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/src/particles.cpp",
+  "output": "CMakeFiles/fallingsand.dir/include/src/particles.cpp.obj"
+},
+{
+  "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\include\\src\\quadtree.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\include\\src\\quadtree.cpp",
+  "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/src/quadtree.cpp",
+  "output": "CMakeFiles/fallingsand.dir/include/src/quadtree.cpp.obj"
+},
+{
+  "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\include\\imgui-sfml\\imgui-SFML.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\include\\imgui-sfml\\imgui-SFML.cpp",
+  "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/imgui-sfml/imgui-SFML.cpp",
+  "output": "CMakeFiles/fallingsand.dir/include/imgui-sfml/imgui-SFML.cpp.obj"
+},
+{
+  "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\include\\imgui\\backends\\imgui_impl_opengl3.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\include\\imgui\\backends\\imgui_impl_opengl3.cpp",
+  "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/imgui/backends/imgui_impl_opengl3.cpp",
+  "output": "CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_opengl3.cpp.obj"
+},
+{
+  "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\include\\imgui\\backends\\imgui_impl_win32.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\include\\imgui\\backends\\imgui_impl_win32.cpp",
+  "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/imgui/backends/imgui_impl_win32.cpp",
+  "output": "CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_win32.cpp.obj"
+},
+{
+  "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\include\\imgui\\imgui.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\include\\imgui\\imgui.cpp",
+  "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/imgui/imgui.cpp",
+  "output": "CMakeFiles/fallingsand.dir/include/imgui/imgui.cpp.obj"
+},
+{
+  "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\include\\imgui\\imgui_demo.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\include\\imgui\\imgui_demo.cpp",
+  "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/imgui/imgui_demo.cpp",
+  "output": "CMakeFiles/fallingsand.dir/include/imgui/imgui_demo.cpp.obj"
+},
+{
+  "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\include\\imgui\\imgui_draw.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\include\\imgui\\imgui_draw.cpp",
+  "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/imgui/imgui_draw.cpp",
+  "output": "CMakeFiles/fallingsand.dir/include/imgui/imgui_draw.cpp.obj"
+},
+{
+  "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\include\\imgui\\imgui_tables.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\include\\imgui\\imgui_tables.cpp",
+  "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/imgui/imgui_tables.cpp",
+  "output": "CMakeFiles/fallingsand.dir/include/imgui/imgui_tables.cpp.obj"
+},
+{
+  "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\include\\imgui\\imgui_widgets.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\include\\imgui\\imgui_widgets.cpp",
+  "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/imgui/imgui_widgets.cpp",
+  "output": "CMakeFiles/fallingsand.dir/include/imgui/imgui_widgets.cpp.obj"
+}
+]
