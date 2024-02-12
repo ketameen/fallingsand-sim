@@ -80,12 +80,12 @@ clean: CMakeFiles/fallingsand.dir/clean
 CMakeFiles/fallingsand.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\fallingsand.dir\build.make CMakeFiles/fallingsand.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\fallingsand.dir\build.make CMakeFiles/fallingsand.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target fallingsand"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Built target fallingsand"
 .PHONY : CMakeFiles/fallingsand.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/fallingsand.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles 13
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/fallingsand.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles 0
 .PHONY : CMakeFiles/fallingsand.dir/rule

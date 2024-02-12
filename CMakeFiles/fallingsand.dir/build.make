@@ -113,11 +113,26 @@ CMakeFiles/fallingsand.dir/include/src/quadtree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/fallingsand.dir/include/src/quadtree.cpp.s"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\include\src\quadtree.cpp -o CMakeFiles\fallingsand.dir\include\src\quadtree.cpp.s
 
+CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.obj: CMakeFiles/fallingsand.dir/flags.make
+CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.obj: CMakeFiles/fallingsand.dir/includes_CXX.rsp
+CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.obj: include/src/thread_pool.cpp
+CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.obj: CMakeFiles/fallingsand.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.obj"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.obj -MF CMakeFiles\fallingsand.dir\include\src\thread_pool.cpp.obj.d -o CMakeFiles\fallingsand.dir\include\src\thread_pool.cpp.obj -c C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\include\src\thread_pool.cpp
+
+CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.i"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\include\src\thread_pool.cpp > CMakeFiles\fallingsand.dir\include\src\thread_pool.cpp.i
+
+CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.s"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\include\src\thread_pool.cpp -o CMakeFiles\fallingsand.dir\include\src\thread_pool.cpp.s
+
 CMakeFiles/fallingsand.dir/include/imgui-sfml/imgui-SFML.cpp.obj: CMakeFiles/fallingsand.dir/flags.make
 CMakeFiles/fallingsand.dir/include/imgui-sfml/imgui-SFML.cpp.obj: CMakeFiles/fallingsand.dir/includes_CXX.rsp
 CMakeFiles/fallingsand.dir/include/imgui-sfml/imgui-SFML.cpp.obj: include/imgui-sfml/imgui-SFML.cpp
 CMakeFiles/fallingsand.dir/include/imgui-sfml/imgui-SFML.cpp.obj: CMakeFiles/fallingsand.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui-sfml/imgui-SFML.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui-sfml/imgui-SFML.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fallingsand.dir/include/imgui-sfml/imgui-SFML.cpp.obj -MF CMakeFiles\fallingsand.dir\include\imgui-sfml\imgui-SFML.cpp.obj.d -o CMakeFiles\fallingsand.dir\include\imgui-sfml\imgui-SFML.cpp.obj -c C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\include\imgui-sfml\imgui-SFML.cpp
 
 CMakeFiles/fallingsand.dir/include/imgui-sfml/imgui-SFML.cpp.i: cmake_force
@@ -132,7 +147,7 @@ CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_opengl3.cpp.obj: CM
 CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_opengl3.cpp.obj: CMakeFiles/fallingsand.dir/includes_CXX.rsp
 CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_opengl3.cpp.obj: include/imgui/backends/imgui_impl_opengl3.cpp
 CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_opengl3.cpp.obj: CMakeFiles/fallingsand.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_opengl3.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_opengl3.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_opengl3.cpp.obj -MF CMakeFiles\fallingsand.dir\include\imgui\backends\imgui_impl_opengl3.cpp.obj.d -o CMakeFiles\fallingsand.dir\include\imgui\backends\imgui_impl_opengl3.cpp.obj -c C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\include\imgui\backends\imgui_impl_opengl3.cpp
 
 CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_opengl3.cpp.i: cmake_force
@@ -147,7 +162,7 @@ CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_win32.cpp.obj: CMak
 CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_win32.cpp.obj: CMakeFiles/fallingsand.dir/includes_CXX.rsp
 CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_win32.cpp.obj: include/imgui/backends/imgui_impl_win32.cpp
 CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_win32.cpp.obj: CMakeFiles/fallingsand.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_win32.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_win32.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_win32.cpp.obj -MF CMakeFiles\fallingsand.dir\include\imgui\backends\imgui_impl_win32.cpp.obj.d -o CMakeFiles\fallingsand.dir\include\imgui\backends\imgui_impl_win32.cpp.obj -c C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\include\imgui\backends\imgui_impl_win32.cpp
 
 CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_win32.cpp.i: cmake_force
@@ -162,7 +177,7 @@ CMakeFiles/fallingsand.dir/include/imgui/imgui.cpp.obj: CMakeFiles/fallingsand.d
 CMakeFiles/fallingsand.dir/include/imgui/imgui.cpp.obj: CMakeFiles/fallingsand.dir/includes_CXX.rsp
 CMakeFiles/fallingsand.dir/include/imgui/imgui.cpp.obj: include/imgui/imgui.cpp
 CMakeFiles/fallingsand.dir/include/imgui/imgui.cpp.obj: CMakeFiles/fallingsand.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/imgui.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/imgui.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fallingsand.dir/include/imgui/imgui.cpp.obj -MF CMakeFiles\fallingsand.dir\include\imgui\imgui.cpp.obj.d -o CMakeFiles\fallingsand.dir\include\imgui\imgui.cpp.obj -c C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\include\imgui\imgui.cpp
 
 CMakeFiles/fallingsand.dir/include/imgui/imgui.cpp.i: cmake_force
@@ -177,7 +192,7 @@ CMakeFiles/fallingsand.dir/include/imgui/imgui_demo.cpp.obj: CMakeFiles/fallings
 CMakeFiles/fallingsand.dir/include/imgui/imgui_demo.cpp.obj: CMakeFiles/fallingsand.dir/includes_CXX.rsp
 CMakeFiles/fallingsand.dir/include/imgui/imgui_demo.cpp.obj: include/imgui/imgui_demo.cpp
 CMakeFiles/fallingsand.dir/include/imgui/imgui_demo.cpp.obj: CMakeFiles/fallingsand.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/imgui_demo.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/imgui_demo.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fallingsand.dir/include/imgui/imgui_demo.cpp.obj -MF CMakeFiles\fallingsand.dir\include\imgui\imgui_demo.cpp.obj.d -o CMakeFiles\fallingsand.dir\include\imgui\imgui_demo.cpp.obj -c C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\include\imgui\imgui_demo.cpp
 
 CMakeFiles/fallingsand.dir/include/imgui/imgui_demo.cpp.i: cmake_force
@@ -192,7 +207,7 @@ CMakeFiles/fallingsand.dir/include/imgui/imgui_draw.cpp.obj: CMakeFiles/fallings
 CMakeFiles/fallingsand.dir/include/imgui/imgui_draw.cpp.obj: CMakeFiles/fallingsand.dir/includes_CXX.rsp
 CMakeFiles/fallingsand.dir/include/imgui/imgui_draw.cpp.obj: include/imgui/imgui_draw.cpp
 CMakeFiles/fallingsand.dir/include/imgui/imgui_draw.cpp.obj: CMakeFiles/fallingsand.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/imgui_draw.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/imgui_draw.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fallingsand.dir/include/imgui/imgui_draw.cpp.obj -MF CMakeFiles\fallingsand.dir\include\imgui\imgui_draw.cpp.obj.d -o CMakeFiles\fallingsand.dir\include\imgui\imgui_draw.cpp.obj -c C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\include\imgui\imgui_draw.cpp
 
 CMakeFiles/fallingsand.dir/include/imgui/imgui_draw.cpp.i: cmake_force
@@ -207,7 +222,7 @@ CMakeFiles/fallingsand.dir/include/imgui/imgui_tables.cpp.obj: CMakeFiles/fallin
 CMakeFiles/fallingsand.dir/include/imgui/imgui_tables.cpp.obj: CMakeFiles/fallingsand.dir/includes_CXX.rsp
 CMakeFiles/fallingsand.dir/include/imgui/imgui_tables.cpp.obj: include/imgui/imgui_tables.cpp
 CMakeFiles/fallingsand.dir/include/imgui/imgui_tables.cpp.obj: CMakeFiles/fallingsand.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/imgui_tables.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/imgui_tables.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fallingsand.dir/include/imgui/imgui_tables.cpp.obj -MF CMakeFiles\fallingsand.dir\include\imgui\imgui_tables.cpp.obj.d -o CMakeFiles\fallingsand.dir\include\imgui\imgui_tables.cpp.obj -c C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\include\imgui\imgui_tables.cpp
 
 CMakeFiles/fallingsand.dir/include/imgui/imgui_tables.cpp.i: cmake_force
@@ -222,7 +237,7 @@ CMakeFiles/fallingsand.dir/include/imgui/imgui_widgets.cpp.obj: CMakeFiles/falli
 CMakeFiles/fallingsand.dir/include/imgui/imgui_widgets.cpp.obj: CMakeFiles/fallingsand.dir/includes_CXX.rsp
 CMakeFiles/fallingsand.dir/include/imgui/imgui_widgets.cpp.obj: include/imgui/imgui_widgets.cpp
 CMakeFiles/fallingsand.dir/include/imgui/imgui_widgets.cpp.obj: CMakeFiles/fallingsand.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/imgui_widgets.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/fallingsand.dir/include/imgui/imgui_widgets.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fallingsand.dir/include/imgui/imgui_widgets.cpp.obj -MF CMakeFiles\fallingsand.dir\include\imgui\imgui_widgets.cpp.obj.d -o CMakeFiles\fallingsand.dir\include\imgui\imgui_widgets.cpp.obj -c C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\include\imgui\imgui_widgets.cpp
 
 CMakeFiles/fallingsand.dir/include/imgui/imgui_widgets.cpp.i: cmake_force
@@ -238,6 +253,7 @@ fallingsand_OBJECTS = \
 "CMakeFiles/fallingsand.dir/main.cpp.obj" \
 "CMakeFiles/fallingsand.dir/include/src/particles.cpp.obj" \
 "CMakeFiles/fallingsand.dir/include/src/quadtree.cpp.obj" \
+"CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.obj" \
 "CMakeFiles/fallingsand.dir/include/imgui-sfml/imgui-SFML.cpp.obj" \
 "CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_opengl3.cpp.obj" \
 "CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_win32.cpp.obj" \
@@ -253,6 +269,7 @@ fallingsand_EXTERNAL_OBJECTS =
 fallingsand.exe: CMakeFiles/fallingsand.dir/main.cpp.obj
 fallingsand.exe: CMakeFiles/fallingsand.dir/include/src/particles.cpp.obj
 fallingsand.exe: CMakeFiles/fallingsand.dir/include/src/quadtree.cpp.obj
+fallingsand.exe: CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.obj
 fallingsand.exe: CMakeFiles/fallingsand.dir/include/imgui-sfml/imgui-SFML.cpp.obj
 fallingsand.exe: CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_opengl3.cpp.obj
 fallingsand.exe: CMakeFiles/fallingsand.dir/include/imgui/backends/imgui_impl_win32.cpp.obj
@@ -265,7 +282,7 @@ fallingsand.exe: CMakeFiles/fallingsand.dir/build.make
 fallingsand.exe: CMakeFiles/fallingsand.dir/linkLibs.rsp
 fallingsand.exe: CMakeFiles/fallingsand.dir/objects1.rsp
 fallingsand.exe: CMakeFiles/fallingsand.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable fallingsand.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\ameen\Documents\softdump\cpp\sfml_projects\falling-sand\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable fallingsand.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\fallingsand.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

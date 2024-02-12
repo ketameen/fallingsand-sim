@@ -368,6 +368,30 @@ include/src/quadtree.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\fallingsand.dir\build.make CMakeFiles/fallingsand.dir/include/src/quadtree.cpp.s
 .PHONY : include/src/quadtree.cpp.s
 
+include/src/thread_pool.obj: include/src/thread_pool.cpp.obj
+.PHONY : include/src/thread_pool.obj
+
+# target to build an object file
+include/src/thread_pool.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fallingsand.dir\build.make CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.obj
+.PHONY : include/src/thread_pool.cpp.obj
+
+include/src/thread_pool.i: include/src/thread_pool.cpp.i
+.PHONY : include/src/thread_pool.i
+
+# target to preprocess a source file
+include/src/thread_pool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fallingsand.dir\build.make CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.i
+.PHONY : include/src/thread_pool.cpp.i
+
+include/src/thread_pool.s: include/src/thread_pool.cpp.s
+.PHONY : include/src/thread_pool.s
+
+# target to generate assembly for a file
+include/src/thread_pool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fallingsand.dir\build.make CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.s
+.PHONY : include/src/thread_pool.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -431,6 +455,9 @@ help:
 	@echo ... include/src/quadtree.obj
 	@echo ... include/src/quadtree.i
 	@echo ... include/src/quadtree.s
+	@echo ... include/src/thread_pool.obj
+	@echo ... include/src/thread_pool.i
+	@echo ... include/src/thread_pool.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

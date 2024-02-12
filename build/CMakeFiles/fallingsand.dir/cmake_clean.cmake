@@ -19,6 +19,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/fallingsand.dir/include/src/particles.cpp.obj.d"
   "CMakeFiles/fallingsand.dir/include/src/quadtree.cpp.obj"
   "CMakeFiles/fallingsand.dir/include/src/quadtree.cpp.obj.d"
+  "CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.obj"
+  "CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.obj.d"
   "CMakeFiles/fallingsand.dir/main.cpp.obj"
   "CMakeFiles/fallingsand.dir/main.cpp.obj.d"
   "fallingsand.exe"

@@ -19,6 +19,12 @@
 },
 {
   "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\include\\src\\thread_pool.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\include\\src\\thread_pool.cpp",
+  "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/src/thread_pool.cpp",
+  "output": "CMakeFiles/fallingsand.dir/include/src/thread_pool.cpp.obj"
+},
+{
+  "directory": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/build",
   "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/fallingsand.dir/includes_CXX.rsp -g -o CMakeFiles\\fallingsand.dir\\include\\imgui-sfml\\imgui-SFML.cpp.obj -c C:\\Users\\ameen\\Documents\\softdump\\cpp\\sfml_projects\\falling-sand\\include\\imgui-sfml\\imgui-SFML.cpp",
   "file": "C:/Users/ameen/Documents/softdump/cpp/sfml_projects/falling-sand/include/imgui-sfml/imgui-SFML.cpp",
   "output": "CMakeFiles/fallingsand.dir/include/imgui-sfml/imgui-SFML.cpp.obj"
