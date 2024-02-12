@@ -119,7 +119,7 @@ int main()
          For Debug:
          Show quadtree regions.
         */
-        particleGrid.renderQuadRegions(window);
+        particleGrid.render(window);
 
         // FPS
         //std::cout << std::to_string(1. / elapsed.asSeconds()) << std::endl;
