@@ -67,7 +67,7 @@ int main()
         
         sf::Event event;
 
-        //std::cout << "listening to mouse" << std::endl;
+        std::cout << "listening to mouse" << std::endl;
         if(sf::Mouse::isButtonPressed(sf::Mouse::Right))
         {
             sf::Vector2i mouse_position = sf::Mouse::getPosition(window);
@@ -79,7 +79,7 @@ int main()
         while (window.pollEvent(event))
         {
             // uncomment this afterwards.
-            ImGui::SFML::ProcessEvent(event);
+            //ImGui::SFML::ProcessEvent(event);
 
             switch (event.type)
             {
@@ -91,18 +91,15 @@ int main()
             }
         }
 
+        std::cout << "init gui" << std::endl;
         // ImGui window config
         sf::Time elapsed = clock.restart();
         fps.setString("FPS: "+ std::to_string(1. / elapsed.asSeconds()));
 
 
-       // /*
-        //*
-        //std::cout << "setting ImGui" << std::endl;
         ImGui::SFML::Update(window, elapsed);
 
         ImGui::Begin("Elements");
-        //ImGui::Text("Falling Sand");
 
         // Elements Buttons
         ImGui::Checkbox("Show QuadTree", &showTree);
@@ -116,12 +113,13 @@ int main()
         
 
 
+        std::cout << "init quadtree" << std::endl;
         particleGrid.initialize_quadTree();
         particleGrid.populateQuadTree();
         particleGrid.setQuadTreeLeaves();
 
         // update particles state
-        //std::cout << "updating cells" << std::endl;
+        std::cout << "updating cells" << std::endl;
 
 
         if(treeActive)
@@ -129,7 +127,7 @@ int main()
         else
         particleGrid.update_all();
 
-        //std::cout << "rendering cells" << std::endl;
+        std::cout << "rendering cells" << std::endl;
         particleGrid.render(window);
 
 
