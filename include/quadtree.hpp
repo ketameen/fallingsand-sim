@@ -2,6 +2,8 @@
 
 #include <vector>
 #include <iostream>
+#include <cstdlib>
+#include <array>
 
 struct QuadPoint 
 {
@@ -32,9 +34,9 @@ struct Boundary
 
     bool contains(QuadPoint point) // check if point is within boundary
     {
-        return ( point.x - center.x > halfDimension )
+        return ( std::abs(center.x - point.x) <= halfDimension )
                 && 
-               ( point.y - center.y > halfDimension ) ;
+               ( std::abs(center.y - point.y) <= halfDimension ) ;
     }
 
 };
@@ -46,26 +48,35 @@ typedef struct Boundary Boundary;
 class QuadTree 
 {
     private:
-        static const int _NODE_CAPACITY = 8 ;
+        static const int _NODE_CAPACITY = 64 ;
         int _current_size               = 0 ;
+        bool active                     = false;
 
-        QuadPoint  _points [_NODE_CAPACITY];
+        std::vector<QuadPoint> _points;
+
+        
 
         Boundary   _boundary;
 
-        QuadTree * _quad_NW;
-        QuadTree * _quad_NE;
-        QuadTree * _quad_SW;
-        QuadTree * _quad_SE;
+        QuadTree * _quad_NW = nullptr;
+        QuadTree * _quad_NE = nullptr;
+        QuadTree * _quad_SW = nullptr;
+        QuadTree * _quad_SE = nullptr;
 
 
     public:
         QuadTree();
         QuadTree(Boundary);
         QuadTree(QuadPoint, float);
-        
+
+        bool empty();
+        void setActive();
+        bool isActive();
+
         int getCapacity();
         Boundary getBoundary();
+
+        void setPoints(std::vector<QuadPoint>);
 
         QuadTree * getNW();
         QuadTree * getNE();
@@ -73,15 +84,18 @@ class QuadTree
         QuadTree * getSE();
 
 
-        QuadPoint * queryPoints(Boundary);
+        std::vector<QuadPoint> queryPoints(Boundary);
 
         void processBoundary();
         
-        std::vector<QuadTree> getLeaves(QuadTree& root);
+        std::vector<QuadTree *> getLeaves(QuadTree * root, std::vector<QuadTree*> &leaves);
 
         bool insert(QuadPoint);
+        bool insert(QuadPoint, bool);
         void subdivide();
 
+
+        ~QuadTree();
 
 
 };

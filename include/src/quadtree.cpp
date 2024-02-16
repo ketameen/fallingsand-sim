@@ -19,72 +19,124 @@ QuadTree * QuadTree::getSW() {return this->_quad_SW;}
 
 QuadTree * QuadTree::getSE() {return this->_quad_SE;}
 
-bool QuadTree::insert(QuadPoint point)
+int QuadTree::getCapacity(){return this->_NODE_CAPACITY;}
+
+bool QuadTree::empty()
 {
-    /*
-    if(this->_current_size < this->_NODE_CAPACITY)
-    {
-        this->points[this->_current_size] = point ;
+    return this->_current_size == 0;
+}
 
-        this->_current_size ++ ;
-    }
-    */
-    //____________________________________________________
+void QuadTree::setActive()
+{
+    this->active = true;
+}
 
-        std::cout << "inserting point" << std::endl;
+bool QuadTree::isActive()
+{
+    return this->active;
+}
+
+/*
+bool QuadTree::insert(QuadPoint point, bool particleActive)
+{
+    if (particleActive) setActive();
+    insert(point);
+    return true;
+}
+*/
+
+bool QuadTree::insert(QuadPoint point, bool particleActive)
+{
 
         if (!this->_boundary.contains(point))
         {
-            std::cout << "does not contain point" << std::endl;
+            /*
+            std::cout << "does not contain point. Boundary centerX: " 
+                      << this->_boundary.center.x 
+                      << ", "
+                      << this->_boundary.center.y
+                      << " | half dimension: "
+                      << this->_boundary.halfDimension
+                      << std::endl;
+            */
             return false; 
         }
 
-        std::cout << "checking" << std::endl;
+        //std::cout << "checking" << std::endl;
 
-        if (this->_current_size < this->_NODE_CAPACITY && this->_quad_NW == nullptr)
+        if (this->_points.size() < this->_NODE_CAPACITY )
         {
-            std::cout << "adding point" << std::endl;
+            //std::cout << "adding point" << std::endl;
 
-            this->_points[this->_current_size] = point ;
+            this->_points.push_back(point) ;
 
-            this->_current_size ++ ;
+            //std::cout << "point added" << std::endl;
+
+            if (particleActive) this->setActive();
+            
+            //std::cout << "current size: "<<  this->_current_size << std::endl;
 
             return true;
         }
 
         if (this->_quad_NW == nullptr)
         {
-            std::cout << "subdividing" << std::endl;
+            //std::cout << "subdividing" << std::endl;
             this->subdivide();
+            this->_points.clear();
         }
             
         
-        std::cout << "inserting to other regions" << std::endl;
+        //std::cout << "inserting to other regions" << std::endl;
 
-        if (this->getNW()->insert(point)) {std::cout << "inserting to NW" << std::endl; return true;}
-        if (this->getNE()->insert(point)) {std::cout << "inserting to NE" << std::endl; return true;}
-        if (this->getSW()->insert(point)) {std::cout << "inserting to SW" << std::endl; return true;}
-        if (this->getSE()->insert(point)) {std::cout << "inserting to SE" << std::endl; return true;}
+        if (this->getNW()->insert(point, particleActive)) {
+            //std::cout << "inserting to NW" << std::endl;
+             return true;}
+        if (this->getNE()->insert(point, particleActive)) {
+            //std::cout << "inserting to NE" << std::endl;
+             return true;}
+        if (this->getSW()->insert(point, particleActive)) {
+            //std::cout << "inserting to SW" << std::endl;
+             return true;}
+        if (this->getSE()->insert(point, particleActive)) {
+            //std::cout << "inserting to SE" << std::endl;
+            return true;}
 
-        std::cout << "done" << std::endl;
+        //std::cout << "done" << std::endl;
     
         return false;
 
     
 }
 
+std::vector<QuadPoint> QuadTree::queryPoints(Boundary boundary)
+{
+    std::vector<QuadPoint> points;
+
+    for (int i = 0; i < this->_points.size(); i++)
+    {
+        QuadPoint point = this->_points[i];
+        if (boundary.contains(point))
+        {
+            points.push_back(point);
+        }
+    }
+
+    return points;
+}
+
+void QuadTree::setPoints(std::vector<QuadPoint> points)
+{
+    this->_points = points;
+}
+
 void QuadTree::subdivide()
 {
-    QuadTree * NW = this->getNW();
-    QuadTree * NE = this->getNE();
-    QuadTree * SW = this->getSW();
-    QuadTree * SE = this->getSE();
-
     Boundary current_boundary = this->getBoundary();
     QuadPoint center          = current_boundary.center;
     float halfDimension       = current_boundary.halfDimension;
 
-    std::cout << "affecting boundaries" << std::endl;
+    //std::cout << "affecting boundaries" << std::endl;
 
     //_______________________________________________________________
 
@@ -96,8 +148,16 @@ void QuadTree::subdivide()
                        ,
                        current_boundary.halfDimension / 2
                        );
-    NW = new QuadTree(NW_boundary);
 
+    this->_quad_NW = new QuadTree(NW_boundary);
+
+    std::vector<QuadPoint> pointsNW = this->queryPoints(NW_boundary);
+
+    if(!pointsNW.empty())
+    {
+
+        this->_quad_NW->setPoints(pointsNW);
+    }
 
     //_______________________________________________________________
 
@@ -109,8 +169,15 @@ void QuadTree::subdivide()
                       current_boundary.halfDimension / 2 
             );
     
-    NE = new QuadTree(NE_boundary);
+    this->_quad_NE = new QuadTree(NE_boundary);
 
+    std::vector<QuadPoint> pointsNE = this->queryPoints(NE_boundary);
+
+    if(!pointsNE.empty())
+    {
+
+        this->_quad_NE->setPoints(pointsNE);
+    }
 
     ///_______________________________________________________________
 
@@ -121,9 +188,15 @@ void QuadTree::subdivide()
                       ,
                       current_boundary.halfDimension / 2 );
     
-    SW = new QuadTree(SW_boundary);
+    this->_quad_SW = new QuadTree(SW_boundary);
 
+    std::vector<QuadPoint> pointsSW = this->queryPoints(SW_boundary);
 
+    if(!pointsSW.empty())
+    {
+
+        this->_quad_SW->setPoints(pointsSW);
+    }
     //_______________________________________________________________
 
     Boundary SE_boundary = 
@@ -133,38 +206,51 @@ void QuadTree::subdivide()
                       ,
                      current_boundary.halfDimension / 2 );
     
-    SE = new QuadTree(SE_boundary);
+    this->_quad_SE = new QuadTree(SE_boundary);
 
-    std::cout << "boundaries affected" << std::endl;
+    std::vector<QuadPoint> pointsSE = this->queryPoints(SE_boundary);
+
+    if(!pointsSE.empty())
+    {
+
+        this->_quad_SE->setPoints(pointsSE);
+    }
+    //std::cout << "boundaries affected" << std::endl;
 }
 
-// retrieving leaf nodes to know which boundaries to process.
-std::vector<QuadTree> QuadTree::getLeaves(QuadTree & root)
+// retrieving leaf nodes to identify which boundaries to process.
+std::vector<QuadTree *> QuadTree::getLeaves(QuadTree * root, std::vector<QuadTree*> &leaves)
 {
-    //std::vector<QuadTree> leaves;
 
-    //if(this->getNW() == nullptr) leaves.push_back();
-    static std::vector<QuadTree> Qtree;
-
-    std::cout << "getting leaves" << std::endl;
-
-    if (root.getNW() == nullptr) 
+    if (root->getNW() == nullptr) 
     {
         
-        std::cout << "only root" << std::endl;
-        Qtree.push_back(root);
+        //std::cout << "only root" << std::endl;
+        leaves.push_back(root);
     }
     
 
     else
     {
-        std::cout << "dividing" << std::endl;
-        getLeaves(*root.getNW());
-        getLeaves(*root.getNE());
-        getLeaves(*root.getSW());
-        getLeaves(*root.getSE());
+        //std::cout << "getting NW children" << std::endl;
+
+        getLeaves(root->getNW(), leaves);
+
+        //std::cout << "getting NE children" << std::endl;
+        getLeaves(root->getNE(), leaves);
+
+        //std::cout << "getting SW children" << std::endl;
+        getLeaves(root->getSW(), leaves);
+
+        //std::cout << "getting SE children" << std::endl;
+        getLeaves(root->getSE(), leaves);
+
+        //std::cout << "got children" << std::endl;
     }
 
-    return Qtree;
+    return leaves;
 
 }
+
+
+QuadTree::~QuadTree(){}

@@ -10,8 +10,8 @@
 
 #include "particles.hpp"
 
-#define  HEIGHT 800
-#define  WIDTH  1280
+#define  HEIGHT 1000
+#define  WIDTH  1000
 
 #define SCALE_FACTOR_X (WIDTH  / SIZE_X)
 #define SCALE_FACTOR_Y (HEIGHT / SIZE_Y)
@@ -45,6 +45,8 @@ int main()
 
     std::cout << "instantiating grid" << std::endl;
     particleGrid particleGrid;
+
+    
 
     particle_type selected_type;
 
@@ -107,28 +109,41 @@ int main()
         if(ImGui::Button("Erase")) selected_type = AIR   ;
         ImGui::SliderInt("Bucket_Size", &particleGrid.brush_size, MIN_BUCKET_SIZE, MAX_BUCKET_SIZE);
         
+
+
+        particleGrid.initialize_quadTree();
+        particleGrid.populateQuadTree();
+        particleGrid.setQuadTreeLeaves();
+
         // update particles state
         //std::cout << "updating cells" << std::endl;
+
         particleGrid.update_all();
+
+        //particleGrid.processByQuadTree();
 
         //std::cout << "rendering cells" << std::endl;
         particleGrid.render(window);
+
 
         /*
          *
          For Debug:
          Show quadtree regions.
+        *
         */
-        //particleGrid.renderQuadRegions(window);
+        particleGrid.renderQuadRegions(window);
 
         // FPS
-        //std::cout << std::to_string(1. / elapsed.asSeconds()) << std::endl;
+        std::cout << std::to_string(1. / elapsed.asSeconds()) << std::endl;
         window.draw(fps);
 
         ImGui::End();
 
         // render menu
         ImGui::SFML::Render(window);
+
+        
         
         window.display();
     }

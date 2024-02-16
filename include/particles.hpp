@@ -5,15 +5,19 @@
 #include <vector>
 #include <cstdint>
 
+#include <ctpl_stl.h>
+
 #include <SFML/Graphics.hpp>
 
 #define SIZE_X 200
 #define SIZE_Y 200
 
-#define MIN_BUCKET_SIZE 3
-#define MAX_BUCKET_SIZE 12
+#define MIN_BUCKET_SIZE 1
+#define MAX_BUCKET_SIZE 32
 
-#define CELL_NUMBER 20000
+#define CELL_NUMBER 1
+
+#define BOUNDARY_WIDTH 1
 
 
 
@@ -56,7 +60,8 @@ typedef struct particle
 class particleGrid 
 {
     private:
-        QuadTree quadTree;
+        QuadTree * quadTree;
+        std::vector<QuadTree*> quadTreeLeaves;
         int _WIDTH, _HEIGHT;
         particle _cells [SIZE_Y] [SIZE_X];
         sf::Vector2f _scale;
@@ -75,6 +80,8 @@ class particleGrid
 
         void initialize_cells();
         void initialize_quadTree();
+        void populateQuadTree();
+        void setQuadTreeLeaves();
         
         void update_quadTree();
 
@@ -90,7 +97,7 @@ class particleGrid
         sf::Color generateColor(particle_type);
 
         void processByQuadTree();
-        void renderQuadRegions(sf::RenderWindow&);
+        bool renderQuadRegions(sf::RenderWindow&);
 
         bool inbound(int, int);
         bool update_particle(int, int);
@@ -105,6 +112,7 @@ class particleGrid
         void erase(int);
         void add_random_cells();
         void reset_cells();
+        void reset_cells(Boundary);
         void swap_particle(int,int,int,int);
 
         uint8_t check_neighbors(int,int);
@@ -113,9 +121,5 @@ class particleGrid
 
         void renderRegion(sf::RenderWindow&, Boundary);
         void render(sf::RenderWindow&);
-        
-
-
-
 
 };

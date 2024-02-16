@@ -57,6 +57,7 @@ void particleGrid::add_random_cells()
     }
 }
 
+
 // treating each empty cell as an AIR cell is obviously very bad.
 void particleGrid::initialize_cells()
 {
@@ -82,7 +83,35 @@ int particleGrid::getBrushSize()
 
 void particleGrid::initialize_quadTree()
 {
-    this->quadTree = QuadTree();
+    int x = SIZE_X;
+    int y = SIZE_Y;
+
+    QuadPoint center = QuadPoint(x/2, y/2);
+    delete(this->quadTree);
+    this->quadTree   = new QuadTree(center, x/2);
+
+    this->quadTreeLeaves.clear();
+    
+}
+
+void particleGrid::populateQuadTree()
+{
+    for (int i = 0; i < SIZE_X; i++)
+    {
+        for(int j = 0; j < SIZE_Y; j++)
+        {
+            particle Particle = this->get_particle(i, j);
+            if(Particle.type !=AIR)
+            {
+                this->quadTree->insert(QuadPoint(i, j), !Particle.stable);
+            }
+        }
+    }
+}
+
+void particleGrid::setQuadTreeLeaves()
+{
+    this->quadTree->getLeaves(this->quadTree, this->quadTreeLeaves);
 }
 
 particle particleGrid::get_particle(int x, int y)
@@ -274,7 +303,7 @@ void particleGrid::reset_cells()
 
 bool particleGrid::inbound(int x, int y)
 {
-    if (x > SIZE_X || y > SIZE_Y || x < 0 || y < 0) return false;
+    if (x > SIZE_X - 1 || y > SIZE_Y - 1 || x < 1 || y < 1) return false;
     return true;
 }
 
@@ -366,6 +395,7 @@ void particleGrid::swap_particle(int x0, int y0, int x1, int y1)
 bool particleGrid::update_particle(int i, int j)
 {
 
+    // to debug.
     if(!inbound(i+1, j+1) || !inbound(i-1, j-1))
     {
         return 0;
@@ -459,16 +489,39 @@ void particleGrid::update_all()
     this->reset_cells();
 }
 
+
+// need to process each a number of quads in parallel.
+/*
+ *
 void particleGrid::processByQuadTree()
 {
     // meh
-    std::vector<QuadTree> leaves = this->quadTree.getLeaves(this->quadTree);
+    uint8_t n_threads = 3;
 
-    for (QuadTree leaf: leaves)
+    ctpl::thread_pool thread_pool(n_threads);
+
+    
+    for (size_t index=0; index < this->quadTreeLeaves.size() / n_threads; index ++)
     {
-        update_region(leaf.getBoundary());
+        thread_pool.push(
+            [&]()
+            {
+                update_region(this->quadTreeLeaves.at(index)->getBoundary());
+                //return true;
+            });
     }
-}
+    /*
+    for (QuadTree * leaf: this->quadTreeLeaves)
+    {
+        if(leaf->isActive())
+        update_region(leaf->getBoundary());
+    }
+    */
+//    reset_cells();
+//}
+/*
+*
+*/
 
 void particleGrid::update_region(Boundary boundary)
 {
@@ -488,30 +541,65 @@ void particleGrid::update_region(Boundary boundary)
 
 }
 
+void particleGrid::reset_cells(Boundary boundary)
+{
+    int start_x = boundary.center.x - boundary.halfDimension ;
+    int   end_x = boundary.center.x + boundary.halfDimension ;
+
+    int start_y = boundary.center.y - boundary.halfDimension ;
+    int   end_y = boundary.center.y + boundary.halfDimension ;
+
+    for (int x = start_x; x < end_x; x ++)
+    {
+        for (int y = start_y; y < end_y; y++)
+        {
+            this->_cells[x][y].updated = false;
+        }
+    }
+}
+
 void particleGrid::renderRegion(sf::RenderWindow& window, Boundary boundary)
 {
+    int center_x = (boundary.center.x) * getScale().x;
+    int center_y = (boundary.center.y) * getScale().y;
+    
+    //std::cout << "boundary center : (" << center_x << ", " << center_y << ")" << std::endl;
+    
 
-    sf::RectangleShape rectangle(sf::Vector2f(boundary.center.x - boundary.halfDimension,
-                                              boundary.center.y - boundary.halfDimension));
+    int scaled_half_dim_x = boundary.halfDimension * getScale().x;
+    int scaled_half_dim_y = boundary.halfDimension * getScale().y;
 
-    rectangle.setSize(sf::Vector2f(2 * boundary.halfDimension,
-                                   2 * boundary.halfDimension));
+    sf::RectangleShape rectangleOne(sf::Vector2f(BOUNDARY_WIDTH,
+                                                 2 * scaled_half_dim_y));
 
-    rectangle.setFillColor(sf::Color(125,125,125));
+    sf::RectangleShape rectangleTwo(sf::Vector2f(2 * scaled_half_dim_x,
+                                                 BOUNDARY_WIDTH));
+    
+    rectangleOne.setPosition(sf::Vector2f(center_x                          , center_y  - scaled_half_dim_y));
+    rectangleTwo.setPosition(sf::Vector2f(center_x  - scaled_half_dim_x     , center_y                     ));
+    //rectangle.setSize(sf::Vector2f(3,
+    //                               scaled_half_dim_x));
 
-    window.draw(rectangle);
+    rectangleOne.setFillColor(sf::Color(255, 50, 50));
+    rectangleTwo.setFillColor(sf::Color(255, 50, 50));
+
+    window.draw(rectangleOne);
+    window.draw(rectangleTwo);
 }
 
 
-void particleGrid::renderQuadRegions(sf::RenderWindow& window)
+bool particleGrid::renderQuadRegions(sf::RenderWindow& window)
 {
-    std::vector<QuadTree> leaves = this->quadTree.getLeaves(this->quadTree);
-
-    for (QuadTree leaf: leaves)
+    std::cout << "quadtree leaf nodes number: " << this->quadTreeLeaves.size() << std::endl;
+    for (QuadTree * leaf: this->quadTreeLeaves)
     {
-        renderRegion(window, leaf.getBoundary());
+        //std::cout << "rendering boundary for leaf node " << std::endl;
+        //if(leaf->isActive())
+        renderRegion(window, leaf->getBoundary());
+        //std::cout << "rendering done " << std::endl;
     }
 
+    return true;
 } 
 
 void particleGrid::render(sf::RenderWindow& window)
