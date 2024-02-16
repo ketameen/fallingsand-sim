@@ -43,6 +43,9 @@ int main()
     std::cout << "setting frame limit" << std::endl;
     window.setFramerateLimit(120);
 
+    bool showTree   = false;
+    bool treeActive = false;
+
     std::cout << "instantiating grid" << std::endl;
     particleGrid particleGrid;
 
@@ -102,6 +105,8 @@ int main()
         //ImGui::Text("Falling Sand");
 
         // Elements Buttons
+        ImGui::Checkbox("Show QuadTree", &showTree);
+        ImGui::Checkbox("Use QuadTree" , &treeActive);
         if(ImGui::Button( "Sand")) selected_type = SAND  ;
         if(ImGui::Button("Water")) selected_type = WATER ;
         if(ImGui::Button("Smoke")) selected_type = SMOKE ;
@@ -118,9 +123,11 @@ int main()
         // update particles state
         //std::cout << "updating cells" << std::endl;
 
-        particleGrid.update_all();
 
-        //particleGrid.processByQuadTree();
+        if(treeActive)
+        particleGrid.processByQuadTree();
+        else
+        particleGrid.update_all();
 
         //std::cout << "rendering cells" << std::endl;
         particleGrid.render(window);
@@ -132,6 +139,7 @@ int main()
          Show quadtree regions.
         *
         */
+        if(showTree)
         particleGrid.renderQuadRegions(window);
 
         // FPS

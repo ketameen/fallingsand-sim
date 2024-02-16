@@ -23,7 +23,7 @@ int QuadTree::getCapacity(){return this->_NODE_CAPACITY;}
 
 bool QuadTree::empty()
 {
-    return this->_current_size == 0;
+    return this->_points.size() == 0;
 }
 
 void QuadTree::setActive()

@@ -13,7 +13,7 @@
 #define SIZE_Y 200
 
 #define MIN_BUCKET_SIZE 1
-#define MAX_BUCKET_SIZE 32
+#define MAX_BUCKET_SIZE 8
 
 #define CELL_NUMBER 1
 
@@ -60,11 +60,13 @@ typedef struct particle
 class particleGrid 
 {
     private:
-        QuadTree * quadTree;
-        std::vector<QuadTree*> quadTreeLeaves;
         int _WIDTH, _HEIGHT;
         particle _cells [SIZE_Y] [SIZE_X];
         sf::Vector2f _scale;
+
+        QuadTree * quadTree;
+        std::vector<QuadTree*> quadTreeLeaves;
+        
         
     
     public:

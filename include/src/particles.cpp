@@ -33,6 +33,7 @@ void particleGrid::set_dimensions(int HEIGHT, int WIDTH)
     this->_WIDTH  = WIDTH ;
 }
 
+
 void particleGrid::add_random_cells()
 {
     int counter = CELL_NUMBER;
@@ -58,7 +59,6 @@ void particleGrid::add_random_cells()
 }
 
 
-// treating each empty cell as an AIR cell is obviously very bad.
 void particleGrid::initialize_cells()
 {
     particle * Particle = new particle();
@@ -491,8 +491,7 @@ void particleGrid::update_all()
 
 
 // need to process each a number of quads in parallel.
-/*
- *
+
 void particleGrid::processByQuadTree()
 {
     // meh
@@ -500,7 +499,7 @@ void particleGrid::processByQuadTree()
 
     ctpl::thread_pool thread_pool(n_threads);
 
-    
+    /*
     for (size_t index=0; index < this->quadTreeLeaves.size() / n_threads; index ++)
     {
         thread_pool.push(
@@ -510,15 +509,16 @@ void particleGrid::processByQuadTree()
                 //return true;
             });
     }
-    /*
+    */
+
     for (QuadTree * leaf: this->quadTreeLeaves)
     {
-        if(leaf->isActive())
+        if(!leaf->empty())
         update_region(leaf->getBoundary());
     }
-    */
-//    reset_cells();
-//}
+    
+    this->reset_cells();
+}
 /*
 *
 */
