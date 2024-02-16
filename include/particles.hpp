@@ -60,12 +60,14 @@ typedef struct particle
 class particleGrid 
 {
     private:
+        QuadTree * quadTree = nullptr;
+        std::vector<QuadTree*> quadTreeLeaves;
+
         int _WIDTH, _HEIGHT;
         particle _cells [SIZE_Y] [SIZE_X];
         sf::Vector2f _scale;
 
-        QuadTree * quadTree;
-        std::vector<QuadTree*> quadTreeLeaves;
+        
         
         
     

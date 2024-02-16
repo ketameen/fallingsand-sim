@@ -10,8 +10,8 @@
 
 #include "particles.hpp"
 
-#define  HEIGHT 1000
-#define  WIDTH  1000
+#define  HEIGHT 900
+#define  WIDTH  1200
 
 #define SCALE_FACTOR_X (WIDTH  / SIZE_X)
 #define SCALE_FACTOR_Y (HEIGHT / SIZE_Y)
@@ -67,7 +67,7 @@ int main()
         
         sf::Event event;
 
-        std::cout << "listening to mouse" << std::endl;
+        //std::cout << "listening to mouse" << std::endl;
         if(sf::Mouse::isButtonPressed(sf::Mouse::Right))
         {
             sf::Vector2i mouse_position = sf::Mouse::getPosition(window);
@@ -79,7 +79,7 @@ int main()
         while (window.pollEvent(event))
         {
             // uncomment this afterwards.
-            //ImGui::SFML::ProcessEvent(event);
+            ImGui::SFML::ProcessEvent(event);
 
             switch (event.type)
             {
@@ -110,26 +110,25 @@ int main()
         if(ImGui::Button("Stone")) selected_type = STONE ;
         if(ImGui::Button("Erase")) selected_type = AIR   ;
         ImGui::SliderInt("Bucket_Size", &particleGrid.brush_size, MIN_BUCKET_SIZE, MAX_BUCKET_SIZE);
+        if(ImGui::Button("Reset")) particleGrid.initialize_cells();
         
 
 
-        std::cout << "init quadtree" << std::endl;
+        //std::cout << "init quadtree" << std::endl;
         particleGrid.initialize_quadTree();
         particleGrid.populateQuadTree();
         particleGrid.setQuadTreeLeaves();
 
         // update particles state
-        std::cout << "updating cells" << std::endl;
-
+        //std::cout << "updating cells" << std::endl;
 
         if(treeActive)
         particleGrid.processByQuadTree();
         else
         particleGrid.update_all();
 
-        std::cout << "rendering cells" << std::endl;
+        //std::cout << "rendering cells" << std::endl;
         particleGrid.render(window);
-
 
         /*
          *
@@ -141,7 +140,7 @@ int main()
         particleGrid.renderQuadRegions(window);
 
         // FPS
-        std::cout << std::to_string(1. / elapsed.asSeconds()) << std::endl;
+        std::cout << "FPS: " << std::to_string(1. / elapsed.asSeconds()) << std::endl;
         window.draw(fps);
 
         ImGui::End();

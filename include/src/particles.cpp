@@ -87,6 +87,7 @@ void particleGrid::initialize_quadTree()
     int y = SIZE_Y;
 
     QuadPoint center = QuadPoint(x/2, y/2);
+    if(this->quadTree != nullptr)
     delete(this->quadTree);
     this->quadTree   = new QuadTree(center, x/2);
 
@@ -134,9 +135,9 @@ uint8_t particleGrid::getDensityByType(particle_type type)
         case SMOKE:
             return 0;
             break;
-        //case STONE:
-        //    return 5;
-        //    break;
+        case STONE:
+            return 5;
+            break;
         default:
             return     1;
     }
@@ -211,6 +212,7 @@ sf::Color particleGrid::generateColor(particle_type type)
 
 void particleGrid::add_particle(int x, int y, particle  particle)
 {
+    if(inbound(x,y))
     this->_cells[y][x] = particle;
 }
 
@@ -319,7 +321,7 @@ void particleGrid::update_particle_type(int x, int y, particle_type type)
 
 /*
  *
- We need to check for the change in neighbors and make the cell not
+ Must check for the change in neighbors and make the cell not
  stable in that case.
  *
 */
@@ -491,10 +493,9 @@ void particleGrid::update_all()
 
 
 // need to process each a number of quads in parallel.
-
+// need to implement thread pooling.
 void particleGrid::processByQuadTree()
 {
-    // meh
     uint8_t n_threads = 3;
 
     ctpl::thread_pool thread_pool(n_threads);
