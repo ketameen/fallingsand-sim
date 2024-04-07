@@ -5,7 +5,7 @@ Project made to improve C++ knowledge. (still a wip)
 
 ![fsand](https://github.com/ketameen/fallingsand-sim/assets/112092724/4caf3613-2838-41b0-a76b-dfee2e80baba)
 
-Usage
+# Usage
 ```
 cd build && mingw32-make && ./fallingsand.exe
 ```
